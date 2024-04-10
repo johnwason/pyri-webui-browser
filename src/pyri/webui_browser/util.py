@@ -1,6 +1,6 @@
 from copy import copy
 import traceback
-from pyodide import to_js
+from pyodide.ffi import to_js
 import js
 
 def device_status_name(devices_states, local_device_name):

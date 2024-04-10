@@ -3,7 +3,7 @@ from mimetypes import init
 from typing import Dict, Any, Callable, Union
 import js
 
-from pyodide import create_once_callable, create_proxy, to_js
+from pyodide.ffi import create_once_callable, create_proxy, to_js
 import inspect
 import traceback
 import sys

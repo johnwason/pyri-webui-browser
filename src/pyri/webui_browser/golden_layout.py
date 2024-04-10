@@ -1,7 +1,7 @@
 import js
 import json
 from .util import to_js2
-from pyodide import create_proxy
+from pyodide.ffi import create_proxy
 from .pyri_vue import PyriVue, VueComponent, vue_data, vue_prop, vue_register_component
 import traceback
 from typing import NamedTuple, Dict
