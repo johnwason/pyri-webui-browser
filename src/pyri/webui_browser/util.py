@@ -5,6 +5,8 @@ import js
 
 def device_status_name(devices_states, local_device_name):
     try:
+        if local_device_name is None:
+            return "invalid"
         if devices_states.devices_states[local_device_name].ready:
             status = "ready"
         elif devices_states.devices_states[local_device_name].error:
