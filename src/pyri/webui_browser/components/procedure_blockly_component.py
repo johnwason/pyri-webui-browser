@@ -2,6 +2,7 @@ from typing import List, Dict, Callable, Any, Union, Tuple
 import importlib_resources
 import js
 import traceback
+import asyncio
 
 from ..util import to_js2
 
@@ -43,7 +44,7 @@ class PyriBlocklyEditorComponent(PyriVue):
             while not iframe.blocklyReady():
                 delay_count+=1
                 assert delay_count < 100
-                await RRN.AsyncSleep(0.1,None)
+                await asyncio.sleep(0.1)
 
             iframe.setBlocklyJsonText(procedure_src.data)
         except:

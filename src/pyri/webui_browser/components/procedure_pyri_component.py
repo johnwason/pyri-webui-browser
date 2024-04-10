@@ -11,6 +11,7 @@ from RobotRaconteurCompanion.Util.UuidUtil import UuidUtil
 from .procedure_util import do_stop_all, run_procedure
 import io
 import json
+import asyncio
 
 @VueComponent
 class PyriEditorComponent(PyriVue):
@@ -48,7 +49,7 @@ class PyriEditorComponent(PyriVue):
             while not iframe.editorReady():
                 delay_count+=1
                 assert delay_count < 100
-                await RRN.AsyncSleep(0.1,None)
+                await asyncio.sleep(0.1)
 
             iframe.setValue(procedure_src.data)
         except:

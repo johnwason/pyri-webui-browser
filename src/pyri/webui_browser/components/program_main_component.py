@@ -11,6 +11,7 @@ from RobotRaconteurCompanion.Util.UuidUtil import UuidUtil
 from .procedure_util import do_stop_all, rr_uuid_to_py_uuid
 import uuid
 import re
+import asyncio
 
 @VueComponent
 class PyriProgramMainComponent(PyriVue):
@@ -241,7 +242,7 @@ class PyriProgramMainComponent(PyriVue):
             traceback.print_exc()
 
     async def run(self):
-        await RRN.AsyncSleep(0.1,None)
+        await asyncio.sleep(0.1)
         
         while True:
             try:
@@ -281,7 +282,7 @@ class PyriProgramMainComponent(PyriVue):
             except:
                 traceback.print_exc()
 
-            await RRN.AsyncSleep(0.2,None)
+            await asyncio.sleep(0.2)
 
     @vue_method
     def edit_step_ok(self, evt):

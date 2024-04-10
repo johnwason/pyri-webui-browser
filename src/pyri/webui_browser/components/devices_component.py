@@ -11,6 +11,8 @@ from ..util import to_js2
 
 from ..pyri_vue import PyriVue, VueComponent, vue_register_component, vue_data, vue_method
 
+import asyncio
+
 @VueComponent
 class PyriDevicesComponent(PyriVue):
 
@@ -354,7 +356,7 @@ class PyriDevicesComponent(PyriVue):
 
 
     async def run(self):
-        await RRN.AsyncSleep(0.1,None)
+        await asyncio.sleep(0.1)
         
         last_devices = set()
 
@@ -444,7 +446,7 @@ class PyriDevicesComponent(PyriVue):
                 traceback.print_exc()
                 self.device_list = to_js2([])
             
-            await RRN.AsyncSleep(0.5,None)
+            await asyncio.sleep(0.5)
         
 
 def register_vue_components():

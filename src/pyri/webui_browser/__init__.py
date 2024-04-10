@@ -12,6 +12,7 @@ from.js_loader import JsLoader
 import importlib_resources
 from .util import to_js2
 import time
+import asyncio
 
 
 def fill_rr_url_template(url):
@@ -121,7 +122,7 @@ class PyriWebUIBrowser:
                     return
                 if "devices_states" in self._device_manager.get_device_names():
                     break
-                await RRN.AsyncSleep(0.1,None)
+                await asyncio.sleep(0.1)
                 await self.update_devices()
 
             self._device_manager.connect_device("variable_storage")        
@@ -141,7 +142,7 @@ class PyriWebUIBrowser:
             await self.hide_loading_screen()
 
             while True:
-                await RRN.AsyncSleep(0.1,None)
+                await asyncio.sleep(0.1)
                 await self.update()
         except:
             traceback.print_exc()
@@ -174,7 +175,7 @@ class PyriWebUIBrowser:
 
     async def update_devices(self):
         try:
-            await RRN.AsyncSleep(0.02,None)
+            await asyncio.sleep(0.02)
             await self._device_manager.async_refresh_devices(1)
         except:
             traceback.print_exc()
@@ -238,6 +239,6 @@ class PyriWebUIBrowser:
             self._device_infos_update_running = False
 
     async def hide_loading_screen(self):
-        await RRN.AsyncSleep(0.25,None)
+        await asyncio.sleep(0.25)
         js.jQuery("#loading_screen").fadeOut()
         

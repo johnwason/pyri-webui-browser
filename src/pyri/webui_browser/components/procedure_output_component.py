@@ -2,6 +2,7 @@ from typing import List, Dict, Callable, Any, Union, Tuple
 import importlib_resources
 import js
 import traceback
+import asyncio
 
 from ..util import to_js2
 
@@ -38,7 +39,7 @@ class PyriProcedureOutputComponent(PyriVue):
 
                 except Exception:
                     traceback.print_exc()
-                    await RRN.AsyncSleep(2, None)
+                    await asyncio.sleep(2)
                     continue
                 try:
                     gen = await sandbox.async_getf_output(None)
@@ -55,7 +56,7 @@ class PyriProcedureOutputComponent(PyriVue):
                             continue
                 except Exception:
                     traceback.print_exc()
-                    await RRN.AsyncSleep(0.5, None)
+                    await asyncio.sleep(0.5)
                     continue                
         except:
             traceback.print_exc()
